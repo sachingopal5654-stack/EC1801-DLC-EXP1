@@ -21,17 +21,49 @@ exp1_boolean_min.vcd	VCD waveform dump generated during simulation
 
 ## Verilog Program
 
+//gedit fun.v
+module fun (
+input wire A, 
+input wire B, 
+output wire F 
+); 
+assign F = (~A) | B ;    // F = A' + B 
+endmodule
+
 
 
 ## TestBench Program
 
+// gedit tb.v
+module tb;
+    reg A, B;
+    wire F;
+    // Instantiate the design under test (DUT)
+    fun uut (
+        .A(A),
+        .B(B),
+        .F(F)
+    );
 
+    initial begin
+        // ---- VCD dump setup ----
+        $dumpfile("fun.vcd");   // name of the VCD file to be generated
+        $dumpvars(0, tb);   // dump all signals in this testbench hierarchy
 
+        // ---- Apply all 4 input combinations ----
+        $monitor("Time=%0t A=%b B=%b | F=%b", $time, A, B, F);
 
+        A = 0; B = 0; #10;
+        A = 0; B = 1; #10;
+        A = 1; B = 0; #10;
+        A = 1; B = 1; #10;
 
+        #10 $finish;
+    end
 
+endmodule
 
-    
+   
 ## Truth Table
  
 <img width="795" height="311" alt="image" src="https://github.com/user-attachments/assets/dd4ba5b9-016b-4ae5-a693-f309c60c4c0e" />
@@ -84,6 +116,9 @@ was minimized to F=B'D'+BD.
 and successfully implemented using Verilog HDL.
 
 ## OUTPUT
+
+<img width="1917" height="1025" alt="experiment-1(26011448)" src="https://github.com/user-attachments/assets/75904858-e635-4806-bdeb-7e6d6160516a" />
+
 
 
 
