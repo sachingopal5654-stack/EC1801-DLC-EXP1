@@ -23,15 +23,13 @@ exp1_boolean_min.vcd	VCD waveform dump generated during simulation
 
 //gedit fun.v
 
-module fun (
-
-input wire A, 
+module fun 
+(input wire A, 
 
 input wire B, 
 
-output wire F 
+output wire F ); 
 
-); 
 assign F = (~A) | B ;    // F = A' + B 
 
 endmodule
@@ -41,7 +39,9 @@ endmodule
 ## TestBench Program
 
 // gedit tb.v
+
 module tb;
+
     reg A, B;
     wire F;
     // Instantiate the design under test (DUT)
