@@ -22,12 +22,18 @@ exp1_boolean_min.vcd	VCD waveform dump generated during simulation
 ## Verilog Program
 
 //gedit fun.v
+
 module fun (
+
 input wire A, 
+
 input wire B, 
+
 output wire F 
+
 ); 
 assign F = (~A) | B ;    // F = A' + B 
+
 endmodule
 
 
