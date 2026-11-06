@@ -40,8 +40,7 @@ endmodule
 
 // gedit tb.v
 
-module tb;
-
+    module tb;
     reg A, B;
     wire F;
     // Instantiate the design under test (DUT)
